@@ -28,7 +28,7 @@ def notifications(request):
 
 def profile(request):
     if request.user.is_authenticated:                            
-        return render(request, 'home/profile.html', context)
+        return render(request, 'home/profile.html')
     else:
         return redirect('/')
 
