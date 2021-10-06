@@ -47,19 +47,23 @@
             <table class="table table-borderless">
               <tr>
                 <td style="width: 40px; padding: 0px; padding-top: 5px;">
-                  <img src="https://th.bing.com/th/id/OIP.ptJ7EBRbGUZ4ubFpswFUkAHaHL?w=196&h=191&c=7&r=0&o=5&dpr=1.25&pid=1.7" class="img-fluid rounded-circle" style="width: 35px; height: 35px;" alt="dog">
+                  <a href="{% url 'profile' %}" style="text-decoration: none; color: black;">
+                    <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle" style="width: 35px; height: 35px;" alt="{{ user.username }}">
+                  </a>
                 </td>
                 <td class="py-0" style="line-height: 20px;">
-                  <small class="card-title">
-                    <b>Narendra Modi</b>
-                  </small><br>
-                  <small>@narendramodi</small>
+                  <a href="{% url 'profile' %}" style="text-decoration: none; color: black;">
+                    <small class="card-title">
+                      <b>{{ user.username }}</b>
+                    </small><br>
+                    <small>{{ user.first_name }} {{ user.last_name }}</small>
+                  </a>
                 </td>
                 <td>
                   <div class="dropdown float-end">
                     <button class="btn btn-secondary dropdown-toggle top-tab inactive-btn text-center" type="button" id="navdrop" data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu" aria-labelledby="navdrop">
-                      <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Setting</a></li>
+                      <li><a class="dropdown-item" href="{% url 'settings' %}"><i class="bi bi-gear"></i> Setting</a></li>
                       <li><a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
                     </ul>
                   </div>

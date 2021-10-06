@@ -14,7 +14,7 @@
             <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle" style="width: 150px; max-height: 150px;" alt="{{ user.username }}">
             <br><br>
             <div class="d-lg-none">
-                <button class="btn btn-sm inactive-btn"><i class="bi bi-gear"></i></button>
+                <a href="{% url 'settings' %}" class="btn btn-sm inactive-btn"><i class="bi bi-gear"></i></a>
                 <a class="btn btn-sm btn-outline-danger" href="{% url 'logout' %}" style="border-radius: 10px;"><i class="bi bi-box-arrow-left"></i></a>
             </div>
 
@@ -25,7 +25,7 @@
             </h3>
             <p> {{ user.first_name }} {{ user.last_name }} </p>
             <small>
-                {{ user.profile.bio }}
+                {{ user.profile.bio|linebreaks|urlize}}
             </small>
         </div>
     </div>

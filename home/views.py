@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import auth
-# Create your views here.
 
 def home(request):
     if request.user.is_authenticated:
@@ -28,12 +27,18 @@ def notifications(request):
         return redirect('/')
 
 def profile(request):
-    if request.user.is_authenticated:
-        return render(request, 'home/profile.html')
+    if request.user.is_authenticated:                            
+        return render(request, 'home/profile.html', context)
     else:
         return redirect('/')
 
 def logout_view(request):
     if request.method == 'GET':
         auth.logout(request)
+        return redirect('/')
+
+def settings(request):
+    if request.user.is_authenticated:
+        return render(request, 'home/settings.html')
+    else:
         return redirect('/')
