@@ -11,7 +11,7 @@
     <!-- dp name bio row -->
     <div class="row">
         <center class="col-lg-6 p-1 col-5">
-            <img src="https://th.bing.com/th/id/OIP.ptJ7EBRbGUZ4ubFpswFUkAHaHL?w=196&h=191&c=7&r=0&o=5&dpr=1.25&pid=1.7" class="img-fluid rounded-circle" style="width: 150px; max-height: 150px;" alt="dog">
+            <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle" style="width: 150px; max-height: 150px;" alt="{{ user.username }}">
             <br><br>
             <div class="d-lg-none">
                 <button class="btn btn-sm inactive-btn"><i class="bi bi-gear"></i></button>
@@ -25,7 +25,7 @@
             </h3>
             <p> {{ user.first_name }} {{ user.last_name }} </p>
             <small>
-                Narendra Modi is the current Prime Minister of India. He is the first and only member of the Bharatiya Janata Party (BJP) since 2009.
+                {{ user.profile.bio }}
             </small>
         </div>
     </div>
