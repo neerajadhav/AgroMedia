@@ -1,0 +1,62 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
+.light-bg-1{
+  background-color: #e6f1ff; /*#ebffe6*/
+}
+
+.dark-bg-1{
+  background-color: #029658;
+}
+
+.light-text-1{
+  color: #37fd4d;
+}
+
+.top-tab{
+  width: 30px;
+  padding: 3px;
+  margin: 0px auto;
+  color: #909499;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.top-tab-active{
+  background-color: #022f96 /*#029658*/;
+  color: #37d9fd /*#37fd4d*/;
+}
+
+.logo{
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+}
+
+.top-search-bar{
+  width: 100%;
+  border-radius: 10px;
+  border: 0px;
+  padding: 5px;
+}
+
+.active-btn{
+  border-radius: 10px;
+  background-color: #022f96 /*#029658*/;
+  color: #a1eeff /*#37fd4d*/;
+}
+
+.active-btn:hover{
+  color: white;
+}
+
+.inactive-btn{
+  border-radius: 10px;
+  background-color: #e6f1ff;
+  border-color: #022f96;
+  color: #022f96;
+}
+
+.inactive-btn:hover{
+  background-color: #022f96;
+  color: white;
+}

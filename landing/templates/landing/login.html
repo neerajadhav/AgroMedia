@@ -1,0 +1,36 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block forms %}
+
+{% for i in messages %}
+<div class="alert alert-danger" style="border-radius: 10px;" role="alert">
+  {{ i }}
+</div>
+{% endfor %}
+
+<h1 class="font-weigth-bold py-3"><img src="{% static 'images/logo.png' %}" alt="logo" style="width: 40px;" class="img-fluid"> AgroMedia</h1>
+<h4>Login to your account</h4><br>
+<form method="post" action"login">
+  {% csrf_token %}
+  <div class="form-row">
+
+    <div class="mb-3">
+      <input type="text" style="border-radius: 10px;" name="username" placeholder="Username" class="form-control my-3 p-3" aria-label="Username" required>
+    </div>
+
+    <div class="mb-3">
+      <input style="border-radius: 10px 0px 0px 10px;" name="password" type="password" placeholder="Password" aria-label="Password" class="form-control my-3 p-3" required>
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" class='btn1 mt-3 mb-5' name="login">Login</button>
+    </div>
+    
+    <a class="d-none" href="#">Forget Password ?</a>  
+    <p>Don't have an account ? <a href="{% url 'signup' %}">SignUp here</a></p>
+
+  </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+{% block title %}SignUp{% endblock %}
+{% block forms %}
+
+{% for i in messages %}
+<div class="alert alert-danger" style="border-radius: 10px;" role="alert">
+  {{ i }}
+</div>
+{% endfor %}
+
+<h1 class="font-weigth-bold py-3"><img src="{% static 'images/logo.png' %}" alt="logo" style="width: 40px;" class="img-fluid"> AgroMedia</h1>
+<h4>Create a new account</h4>
+<br>
+<form method="post" action"signup">
+
+{% csrf_token %}
+
+<div class="form-row">
+    <div style="margin-bottom: 2rem;">
+      <input style="border-radius: 10px 0px 0px 10px;" name="username" type="text" placeholder="Username" aria-label="userame" class="form-control my-3 p-3" required>
+    </div>
+
+    <div class="mb-3">
+      <input type="email" style="border-radius: 10px;" name="email" placeholder="Email" class="form-control my-3 p-3" aria-label="Email" required>
+    </div>
+
+    <div class="input-group">
+      <input style="border-radius: 10px 0px 0px 10px;" name="password" type="password" placeholder="New Password" aria-label="New Password" class="form-control my-3 p-3" required>
+      <input style="border-radius: 0px 10px 10px 0px;" name="password2" type="password" placeholder="Confirm Password" aria-label="Confirm Password" class="form-control my-3 p-3" required>
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" class='btn1 mt-3 mb-5'name="signup">SignUp</button>
+    </div>
+
+<a class="d-none" href="#">Forget Password ?</a>
+<p>Already have an account ? <a href="{% url 'login' %}">Login here</a></p>
+
+</div>
+</form>
+
+{% endblock %}

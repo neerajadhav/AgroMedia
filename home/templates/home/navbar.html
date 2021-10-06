@@ -1,0 +1,54 @@
+{% url 'home' as home %}
+{% url 'newspaper' as newspaper %}
+{% url 'marketplace' as marketplace %}
+{% url 'notifications' as notifications %}
+{% url 'profile' as profile %}
+
+<!-- middle top nav -->
+<div class="row">
+  <div class="col-md-8 mx-auto pt-3 light-bg-1" style="border-radius: 0px 0px 10px 10px;">
+    <table class="table table-borderless">
+
+      <tr class="text-center">
+        <td>
+            <a href="{% url 'home' %}">
+                <div class="top-tab {% if request.path == home %} top-tab-active {% endif %}">
+                    <i class="bi bi-house-fill"></i>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'newspaper' %}">
+                <div class="top-tab {% if request.path == newspaper %} top-tab-active {% endif %}">
+                    <i class="bi bi-newspaper"></i>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'marketplace' %}">
+                <div class="top-tab {% if request.path == marketplace %} top-tab-active {% endif %}">
+                    <i class="bi bi-shop"></i>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'notifications' %}">
+                <div class="top-tab {% if request.path == notifications %} top-tab-active {% endif %}">
+                    <i class="bi bi-bell-fill"></i>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'profile' %}">
+                <div class="top-tab {% if request.path == profile %} top-tab-active {% endif %}">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+            </a>
+        </td>
+      </tr>
+
+      {% include "home/logo-searchbar.html" %}
+
+    </table>
+  </div>
+</div>

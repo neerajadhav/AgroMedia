@@ -1,0 +1,97 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block maincontent %}
+
+<!-- profile card -->
+<div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
+    <!-- dp name bio row -->
+    <div class="row">
+        <center class="col-lg-6 p-1 col-5">
+            <img src="https://th.bing.com/th/id/OIP.ptJ7EBRbGUZ4ubFpswFUkAHaHL?w=196&h=191&c=7&r=0&o=5&dpr=1.25&pid=1.7" class="img-fluid rounded-circle" style="width: 150px; max-height: 150px;" alt="dog">
+            <br><br>
+            <div class="d-lg-none">
+                <button class="btn btn-sm inactive-btn"><i class="bi bi-gear"></i></button>
+                <a class="btn btn-sm btn-outline-danger" href="{% url 'logout' %}" style="border-radius: 10px;"><i class="bi bi-box-arrow-left"></i></a>
+            </div>
+
+        </center>
+        <div class="col-lg-6 col-7">
+            <h3 class="card-title">
+                <b>{{ user.username }}</b>
+            </h3>
+            <p> {{ user.first_name }} {{ user.last_name }} </p>
+            <small>
+                Narendra Modi is the current Prime Minister of India. He is the first and only member of the Bharatiya Janata Party (BJP) since 2009.
+            </small>
+        </div>
+    </div>
+
+    <!-- data row -->
+    <table class="table table-borderless mt-5">
+        <tr class="text-center">
+            <td class="p-0 col-4"><b>Posts</b></td>
+            <td class="p-0 col-4"><b>Followers</b></td>
+            <td class="p-0 col-4"><b>Followings</b></td>
+        </tr>
+        <tr class="text-center">
+            <td class="p-0 col-4">1000</td>
+            <td class="p-0 col-4">1000</td>
+            <td class="p-0 col-4">1000</td>
+        </tr>
+    </table>
+</div>
+
+<!-- modi post -->
+<div class="card shadow border-0 mt-4" style="border-radius: 10px;">
+    <div class="card-body py-0">
+        <table class="table table-borderless">
+        <tr>
+            <td style="width: 40px; padding: 0px; padding-top: 13px;">
+            <img src="https://th.bing.com/th/id/OIP.ptJ7EBRbGUZ4ubFpswFUkAHaHL?w=196&h=191&c=7&r=0&o=5&dpr=1.25&pid=1.7" class="img-fluid rounded-circle" style="width: 35px; height: 35px;" alt="dog">
+            </td>
+            <td class="pb-0" style="line-height: 20px;">
+            <small class="card-title">
+                <b>Narendra Modi</b>
+            </small><br>
+            <small>@narendramodi</small>
+            </td>
+        </tr>
+        </table>
+    </div>
+    <img src="https://images.unsplash.com/photo-1627060710997-18505c0c89b1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80" class="img-fluid" alt="farm">
+    <div class="card-body">
+        <p class="card-text">
+        Since last four months I continuously watered my farm with a drip irrigation system. Now the result is in front of you. Thanks to all the support from Mr. Madhav Laad
+        </p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        
+        <table class="table table-borderless">
+        <thead>
+            <tr class="text-center">
+            <td class="text-muted"><i class="bi bi-hand-thumbs-up"></i></td>
+            <td class="text-warning"><i class="bi bi-chat-left-quote"></i></td>
+            <td class="text-info"><i class="bi bi-share"></i></td>
+            <td class="text-success">
+                <div class="dropdown">
+                <a class="" href="#" role="button" id="postid" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </a>
+                
+                <ul class="dropdown-menu" aria-labelledby="postid">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle"></i> Follow Account</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> Repost</a></li>
+                </ul>
+                </div>
+            </td>
+            </tr>
+        </thead>
+        </table>
+    
+    </div>
+    </div>
+
+{% endblock %}
