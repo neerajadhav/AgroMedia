@@ -9,5 +9,9 @@ class Profile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     image = models.ImageField(default='default.png', upload_to='profile_pics')
 
+    friends = models.ManyToManyField(User, blank=True, related_name='friends')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return f'{self.user.username} Profile'
