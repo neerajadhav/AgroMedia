@@ -6,6 +6,35 @@
 
 {% block maincontent %}
 
-Newspaper
+{% for i in articles %}
+
+<div class="card p-3 pt-1 pt-lg-2 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
+    <div class="row">
+        {% if i.urlToImage %}
+        <div class="col-lg-4 pb-3 p-0 p-lg-2">
+            <a style="text-decoration: none; color: #022f96;" href="{{ i.url }}" target="_blank">
+                <img src="{{ i.urlToImage }}" alt="news" style="width: 100%; border-radius: 10px;" class="img-fluid">
+            </a>
+        </div>
+        {% endif %}
+        <div class="col-lg-8">
+            <b><big><a style="text-decoration: none; color: #022f96;" href="{{ i.url }}" target="_blank">
+                {{ i.title }}
+            </a></big></b><br><br>
+            <p>{{ i.description }}</p>
+            <small class="text-muted">{{ i.publishedAt }}</small>
+            <p><small>
+                {% if i.author %}
+                    {{ i.author }} @
+                {% endif %}
+                {% if i.source.name %}
+                    {{ i.source.name }}
+                {% endif %}
+            </small></p>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
 
 {% endblock %}

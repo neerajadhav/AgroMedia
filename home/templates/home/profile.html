@@ -25,8 +25,11 @@
             </h3>
             <p> {{ user.first_name }} {{ user.last_name }} </p>
             <small>
-                {{ user.profile.bio|linebreaks|urlize}}
-            </small>
+                {{ user.profile.bio|linebreaks }}
+                {% if user.profile.website %}
+                    <i class="bi bi-link-45deg"></i> {{ user.profile.website|urlize }}
+                {% endif %}
+            </small>    
         </div>
     </div>
 

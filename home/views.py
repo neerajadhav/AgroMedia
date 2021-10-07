@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import auth
+import requests
+API_KEY = '985d088b7d85476a9e834a2d8870b5b3'
 
 def home(request):
     if request.user.is_authenticated:
@@ -10,7 +12,15 @@ def home(request):
 
 def newspaper(request):
     if request.user.is_authenticated:
-        return render(request, 'home/newspaper.html')
+        url = 'https://newsapi.org/v2/everything?q=(india AND agriculture AND farmers AND bjp AND modi)&apiKey=' + API_KEY
+        response = requests.get(url)
+        data = response.json()
+        articles = data['articles']
+
+        context = {
+            'articles': articles
+        }
+        return render(request, 'home/newspaper.html', context)
     else:
         return redirect('/')
 

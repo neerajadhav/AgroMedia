@@ -1,21 +1,34 @@
 {% extends "home/base.html" %}
-{% load crispy_forms_tags %}
 {% block title %}
     Settings
 {% endblock %}
 
 {% block maincontent %}
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Update Profile</legend>
-        {{ u_form|crispy }}
-        {{ p_form|crispy }}
-    </fieldset>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Update</button>
-    </div>
-</form>
+<div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
+    <h5>Update Info</h5>
+    <br>
+
+    <form method="POST">
+        <div class="form-group mb-3">
+            <label for="name">Username</label>
+            <input type="text" style="border-radius: 10px;" class="form-control" id="name" name="name" value="{{ user.username }}">
+        </div>  
+        <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input type="email" style="border-radius: 10px;" class="form-control" id="email" name="email" value="{{ user.email }}">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="password">Old Password</label>
+            <input type="password" style="border-radius: 10px;" class="form-control" id="password" name="password" placeholder="Old Password">
+        </div>
+        <div class="form-group mb-3">
+            <label for="password">New Password</label>
+            <input type="password" style="border-radius: 10px;" class="form-control" id="password" name="password" placeholder="New Password">
+        </div>
+    </form>
+
+</div>
 
 {% endblock %}
