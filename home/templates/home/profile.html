@@ -23,7 +23,9 @@
             <h3 class="card-title">
                 <b>{{ user.username }}</b>
             </h3>
-            <p> {{ user.first_name }} {{ user.last_name }} </p>
+            {% if obj.first_name %}
+            <p> {{ obj.first_name }} {{ user.profile.last_name }} </p>
+            {% endif %}
             <small>
                 {{ user.profile.bio|linebreaks }}
                 {% if user.profile.website %}
@@ -37,12 +39,12 @@
     <table class="table table-borderless mt-5">
         <tr class="text-center">
             <td class="p-0 col-4"><b>Posts</b></td>
-            <td class="p-0 col-4"><b>Followers</b></td>
+            <td class="p-0 col-4"><b>Friends</b></td>
             <td class="p-0 col-4"><b>Followings</b></td>
         </tr>
         <tr class="text-center">
             <td class="p-0 col-4">1000</td>
-            <td class="p-0 col-4">1000</td>
+            <td class="p-0 col-4">{{ obj.get_friends_count }}</td>
             <td class="p-0 col-4">1000</td>
         </tr>
     </table>

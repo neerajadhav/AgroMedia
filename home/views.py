@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import auth
 import requests
+from .models import Profile
+from .forms import ProfileModelForm
 API_KEY = '985d088b7d85476a9e834a2d8870b5b3'
 
 def home(request):
@@ -37,8 +39,14 @@ def notifications(request):
         return redirect('/')
 
 def profile(request):
-    if request.user.is_authenticated:                            
-        return render(request, 'home/profile.html')
+    if request.user.is_authenticated: 
+        obj = Profile.objects.get(user=request.user)
+
+        context = {
+            'obj': obj,
+        }
+        return render(request, 'home/profile.html', context)
+                                   
     else:
         return redirect('/')
 
@@ -49,6 +57,18 @@ def logout_view(request):
 
 def settings(request):
     if request.user.is_authenticated:
-        return render(request, 'home/settings.html')
+        profile = Profile.objects.get(user=request.user)
+        form = ProfileModelForm(request.POST or None, request.FILES or None, instance=profile)
+        done = False
+
+        if form.is_valid():
+            form.save()
+            return redirect('/profile')
+
+        context = {
+            'form': form,
+            'done': done,
+        }
+        return render(request, 'home/settings.html', context)
     else:
         return redirect('/')

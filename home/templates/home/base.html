@@ -56,7 +56,9 @@
                     <small class="card-title">
                       <b>{{ user.username }}</b>
                     </small><br>
-                    <small>{{ user.first_name }} {{ user.last_name }}</small>
+                    {% if user.profile.first_name %}
+                    <small> {{ user.profile.first_name }} {{ user.profile.last_name }} </small>
+                    {% endif %}
                   </a>
                 </td>
                 <td>
