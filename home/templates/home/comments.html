@@ -8,7 +8,7 @@
     <div class="input-group mb-3">
         {{ c_form }}
         <button class="btn btn-secondary input-group-addon" style="border-radius: 0px 10px 10px 0px;" name="c_form_sumbit" type="submit">
-            <i class="bi bi-arrow-right"></i>
+            <i class="bi bi-cursor-fill"></i>
         </button>
     </div>
 
@@ -17,12 +17,18 @@
 {% for c in i.comment_set.all %}
 <div class="comment-widgets m-b-5 py-3">
     <div class="d-flex flex-row comment-row">
-        <div class="p-2"><span class="round"><img src="https://i.imgur.com/uIgDDDd.jpg" alt="user" width="35"></span></div>
+        <div class="p-2"><span class="round"><img src="{{ c.user.image.url }}" alt="user" width="35"></span></div>
         <div class="comment-text w-100">
-            <b>Samso Nagaro</b>
+            <b>{{ c.user }}</b>
 
-            <div class="comment-footer"> 
-                <small class="date">April 14, 2019</small> 
+            <span class="m-b-5 m-t-10">
+                <p>
+                    {{ c.body|linebreaks }}    
+                </p>
+            </span>
+            
+            <div> 
+                <small class="text-muted">{{ c.created|timesince }}</small> 
                 {% comment %} <span class="label label-info">Pending</span> 
                 <span class="action-icons"> 
                     <a href="#" data-abc="true"><i class="fa fa-pencil"></i></a> 
@@ -30,10 +36,6 @@
                     <a href="#" data-abc="true"><i class="fa fa-heart"></i></a> 
                 </span>  {% endcomment %}
             </div>
-
-            <small class="m-b-5 m-t-10">
-                {{ c.body }}
-            </small>
 
         </div>
     </div>

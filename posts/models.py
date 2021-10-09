@@ -18,7 +18,7 @@ class Post(models.Model):
         return self.liked.all().count()
 
     def num_comments(self):
-        return self.comments_set.all().count()
+        return self.comment_set.all().count()
 
     class Meta:
         ordering = ['-created']

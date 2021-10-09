@@ -9,13 +9,13 @@ from .forms import PostModelForm, CommentModelForm
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'posts/deletepost.html'
-    successs_url = reverse_lazy('home:home')
+    success_url = reverse_lazy('home')
     
     def get_Object(self, *args, **kwargs):
         pk = self.kwargs.get('pk')
         obj = Post.objects.get(pk=pk)
         if not obj.author.user == self.request.user:
-            messages.warning(self.request, 'You are not the author of this post')
+            messages.warning(request, 'You are not the author of this post')
         return obj
 
 class PostUpdateView(UpdateView):
@@ -23,7 +23,7 @@ class PostUpdateView(UpdateView):
     form_class = PostModelForm
     template_name = 'posts/updatepost.html'
     # fields = ['content', 'image']
-    success_url = reverse_lazy('home:home')
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         form.instance.author = self.request.user

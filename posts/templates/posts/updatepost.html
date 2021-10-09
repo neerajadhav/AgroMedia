@@ -6,6 +6,25 @@
 
 {% block maincontent %}
 
+<div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
+    <h5>Update your post</h5>
+    <br>
 
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <img id="output_image" class="img-fluid mt-3" style="border-radius: 10px;" />
+        <br>
+        <a onclick="$('#file').click();" class="btn inactive-btn mt-3">
+            <i class="bi bi-image"></i>
+        </a>
+        <button class="btn inactive-btn mt-3" type="submit">
+            Update
+        </button>
+    </form>
+
+</div>
 
 {% endblock %}
