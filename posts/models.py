@@ -1,11 +1,12 @@
 from django.db import models
 from home.models import Profile
 from django.core.validators import FileExtensionValidator
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to='images', validators=[FileExtensionValidator(['png', 'jpeg', 'jpg'])], blank=True)
-    liked = models.ManyToManyField(Profile, related_name='liked', default=None)
+    liked = models.ManyToManyField(Profile, related_name='liked', default=None, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
@@ -45,4 +46,4 @@ class Like(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self-user}-{self-post}-{self-value}"
+        return f'{self.user}-{self.post}-{self.value}'

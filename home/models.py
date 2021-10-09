@@ -45,7 +45,7 @@ class Profile(models.Model):
         return total_liked
 
     def __str__(self):
-        return f"{self.user.username}-{self.created.strftime('%d-%m-%Y')} Profile"
+        return f"{self.user.username}"
 
     def save(self, *args, **kwargs):
         ex = False

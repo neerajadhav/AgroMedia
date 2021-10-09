@@ -56,7 +56,10 @@ def signup(request):
                     user = User.objects.create_user(username = username, password = password, email = email)
                     user.save()
                     print("user created")
-                    return redirect('/login')
+                    user = authenticate(username = username, password = password)
+                    if user is not None:
+                        user_login(request, user)
+                        return redirect("/settings")
 
             else:
                 messages.info(request, 'Passwords Didn\'t Match')
