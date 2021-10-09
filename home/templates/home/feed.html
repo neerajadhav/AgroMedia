@@ -54,8 +54,8 @@
                 <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle"></i> Follow Account</a></li>
                 <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> Repost</a></li>
                 {% ifequal request.user i.author.user %}
-                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i> Update Post</a></li>
-                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i> Delete Post</a></li>
+                <li><a class="dropdown-item" href="{% url 'posts:post-update' i.pk %}"><i class="bi bi-pencil-square"></i> Update Post</a></li>
+                <li><a class="dropdown-item text-danger" href="{% url 'posts:post-delete' i.pk %}"><i class="bi bi-trash"></i> Delete Post</a></li>
                 {% endifequal %}
             </ul>
             </div>
