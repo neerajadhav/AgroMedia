@@ -26,7 +26,7 @@ class Post(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    body = models.TextField()
+    body = models.TextField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

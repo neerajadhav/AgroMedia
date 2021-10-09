@@ -9,3 +9,10 @@ class PostModelForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('content', 'image')
+
+class CommentModelForm(forms.ModelForm):
+    body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Write a comment...','rows':1, 'class':'form-control custom-control', 'style':'broder: none; border-radius: 10px 0px 0px 10px; resize: none;'}))
+
+    class Meta:
+        model = Comment
+        fields = ('body',)

@@ -1,12 +1,4 @@
 <!-- create -->
-{% comment %} <div class="pt-5">
-    <div class="mb-3">
-        <textarea class="form-control shadow" style="border-radius: 15px; border: 0px;" rows="3" placeholder="Share what's on your mind"></textarea>
-    </div>
-    <div class="mb-3">
-        <button type="submit" style="border-radius: 10px;" class="try-btn btn inactive-btn float-end shadow"><i class="bi bi-pencil-fill"></i> Post</button>
-    </div>
-</div> {% endcomment %}
 {% load crispy_forms_tags %}
 
 <div class="pt-5">
@@ -20,10 +12,17 @@
     <a onclick="$('#file').click();" class="btn inactive-btn mt-3">
         <i class="bi bi-image"></i>
     </a>
-    <button class="btn inactive-btn mt-3" type="submit">
+    <button class="btn inactive-btn mt-3" name="p_form_submit" type="submit">
         Post
     </button>
     
 </form>
 <br><br>
+
+{% if post_added %}
+<div class="alert alert-success" role="alert" style="border-radius: 10px;">
+  Great work, you have successfully posted your post!
+</div>
+{% endif %}
+
 </div>

@@ -14,7 +14,7 @@
         <small class="card-title">
             <b>{{ i.author.first_name }} {{ i.author.last_name }}</b>
         </small><br>
-        <small>@{{ i.author }}</small>
+        <small>@{{ i.author.user }}</small>
         </td>
     </tr>
     </table>
@@ -24,7 +24,7 @@
 {% endif %}
 <div class="card-body">
     {{ i.content|linebreaks }}
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <p class="card-text"><small class="text-muted">{{ i.created|timesince }} ago</small></p>
     
     <table class="table table-borderless">
     <thead>
@@ -53,6 +53,10 @@
             <ul class="dropdown-menu" aria-labelledby="postid">
                 <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle"></i> Follow Account</a></li>
                 <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> Repost</a></li>
+                {% ifequal request.user i.author.user %}
+                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i> Update Post</a></li>
+                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash"></i> Delete Post</a></li>
+                {% endifequal %}
             </ul>
             </div>
         </td>
@@ -64,11 +68,16 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                Comments
+                <i class="bi bi-chat-dots"></i>
+                &nbsp; {{ i.num_likes }}
+                &nbsp; <span>Comments</span>
             </button>
             </h2>
             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+            <div class="accordion-body p-0 mt-3">
+                {% include 'home/comments.html' %}
+                
+            </div>
             </div>
         </div>
     </div>
