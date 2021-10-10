@@ -23,7 +23,7 @@ class ProfileManager(models.Manager):
         return available
 
     def get_all_profiles(self, me):
-        profiles = Profile.object.all().exclude(user = me)
+        profiles = Profile.objects.all().exclude(user = me)
         return profiles
 
 class Profile(models.Model):
@@ -67,7 +67,7 @@ class Profile(models.Model):
             total_liked += item.liked.all().count()
         return total_liked
 
-    object = ProfileManager()
+    # object = ProfileManager()
     
 
     def __str__(self):

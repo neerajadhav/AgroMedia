@@ -152,7 +152,7 @@ def settings(request):
 
 def invited_received_view(request):
     if request.user.is_authenticated:
-        profile = Profile.object.get(user=request.user)
+        profile = Profile.objects.get(user=request.user)
         qs = Relationship.object.invitations_received(profile)
 
         context = {
@@ -166,7 +166,7 @@ def invited_received_view(request):
 def profile_list_view(request):
     if request.user.is_authenticated:
         user=request.user
-        qs = Profile.object.get_all_profiles(user)
+        qs = Profile.objects.get_all_profiles(user)
 
         context = {
             'qs': qs,
@@ -182,5 +182,5 @@ class ProfileListView(ListView):
 
     def get_queryset(self):
         user = self.request.user
-        qs = Profile.object.get_all_profiles(user)
+        qs = Profile.objects.get_all_profiles(user)
         return qs
