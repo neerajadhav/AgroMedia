@@ -6,8 +6,12 @@
 
 {% block maincontent %}
 
+<div class="mt-5">
+<a href="{% url 'all-profiles' %}" style="border-radius: 10px;" class="btn btn-outline-primary">All Profiles</a>
+<a href="{% url 'invite-profiles' %}" style="border-radius: 10px;" class="btn btn-outline-primary">Send Requests</a>
+</div>
 
-<div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
+<div class="card p-3 mt-lg-3 mt-4 border-0 shadow" style="border-radius: 10px;">
     <h5>Friend Requests</h5>
     <br>
     {% if qs %}

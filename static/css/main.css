@@ -134,3 +134,249 @@
 .mb-100 {
   margin-bottom: 100px
 }/* weather */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.desktop-1 {
+  align-items: flex-start;
+  background-color: var(--white);
+  display: flex;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.desktop-1 .overlap-group3 {
+  align-items: flex-start;
+  background-color:
+#deeff8;
+  display: flex;
+  height: 1024px;
+  min-width: 340px;
+  padding: 30px 28px;
+}
+
+.desktop-1 .rectangle-4 {
+  background-color: var(--mist-gray);
+  height: 38px;
+  width: 253px;
+}
+
+.desktop-1 .flex-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 34px;
+  margin-top: 34px;
+  min-height: 975px;
+  width: 709px;
+}
+
+.desktop-1 .overlap-group2 {
+  align-items: flex-end;
+  background-color:
+#deeff9;
+  display: flex;
+  height: 68px;
+  justify-content: flex-end;
+  margin-left: 4px;
+  min-width: 690px;
+  padding: 0 35px;
+}
+
+.desktop-1 .title {
+  letter-spacing: 0;
+  min-height: 49px;
+  width: 602px;
+}
+
+.desktop-1 .overlap-group5 {
+  align-items: flex-start;
+  background-color: var(--mist-gray);
+  display: flex;
+  height: 41px;
+  margin-left: 4px;
+  margin-top: 65px;
+  min-width: 228px;
+}
+
+.desktop-1 .search-place {
+  letter-spacing: 0;
+  min-height: 40px;
+  width: 228px;
+}
+
+.desktop-1 .rectangle-6 {
+  height: 257px;
+  margin-left: 4px;
+  margin-top: 57px;
+  object-fit: cover;
+  width: 705px;
+}
+
+.desktop-1 .overlap-group6 {
+  height: 133px;
+  margin-top: 60px;
+  position: relative;
+  width: 694px;
+}
+
+.desktop-1 .overlap-group1 {
+  height: 115px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 694px;
+}
+
+.desktop-1 .line-1 {
+  height: 2px;
+  left: 4px;
+  position: absolute;
+  top: 0;
+  width: 690px;
+}
+
+.desktop-1 .text-1 {
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 1px;
+  width: 561px;
+}
+
+.desktop-1 .rectangle-11 {
+  height: 112px;
+  left: 561px;
+  object-fit: cover;
+  position: absolute;
+  top: 21px;
+  width: 133px;
+}
+
+.desktop-1 .overlap-group7 {
+  height: 272px;
+  margin-top: 9px;
+  position: relative;
+  width: 698px;
+}
+
+.desktop-1 .overlap-group4 {
+  height: 114px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 694px;
+}
+
+.desktop-1 .line-2 {
+  height: 2px;
+  left: 4px;
+  position: absolute;
+  top: 10px;
+  width: 690px;
+}
+
+.desktop-1 .text-2 {
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 0;
+  width: 561px;
+}
+
+.desktop-1 .overlap-group {
+  height: 226px;
+  left: 4px;
+  position: absolute;
+  top: 20px;
+  width: 690px;
+}
+
+.desktop-1 .line-3 {
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 111px;
+  width: 690px;
+}
+
+.desktop-1 .rectangle-9 {
+  height: 112px;
+  left: 557px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 133px;
+}
+
+.desktop-1 .text-3 {
+  left: 0;
+  letter-spacing: 0;
+  position: absolute;
+  top: 112px;
+  width: 561px;
+}
+
+.desktop-1 .rectangle-10 {
+  height: 112px;
+  left: 565px;
+  object-fit: cover;
+  position: absolute;
+  top: 160px;
+  width: 133px;
+}
+
+.desktop-1 .line-4 {
+  height: 2px;
+  margin-left: 4.0px;
+  margin-top: 11px;
+  width: 690px;
+}
+
+.desktop-1 .rectangle-2 {
+  height: 1024px;
+  margin-left: 22px;
+  width: 340px;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400");
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+

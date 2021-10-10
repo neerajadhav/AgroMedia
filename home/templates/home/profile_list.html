@@ -9,7 +9,7 @@
 <div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
     <h5>People on AgroMedia</h5>
     <br>
-
+    
     {% if object_list %}
     <div class="row">
         {% for i in object_list %}
@@ -20,7 +20,19 @@
                             <div class="profile"> <img src="{{ i.user.profile.image.url }}" class="rounded-circle" width="60%"> </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <h5 class="mb-0">{{ i.user }}</h5> <span class="text-muted d-block mb-2">{{ i.user.profile.first_name }} {{ i.user.profile.last_name }}</span> <button class="btn btn-success btn-sm follow">Accept</button>
+                            <h5 class="mb-0">{{ i.user }}</h5> <span class="text-muted d-block mb-2">{{ i.user.profile.first_name }} {{ i.user.profile.last_name }}</span>
+                            
+                            <form action="" methods="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="profile_pk" value="{{ i.pk }}">
+                                
+                            </form>
+
+                            <form action="" methods="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="profile_pk" value="{{ i.pk }}">
+                            </form>
+
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ from posts.forms import PostModelForm, CommentModelForm
 from posts.models import Post, Like
 from django.http import JsonResponse
 from django.views.generic import ListView
+from django.contrib.auth.models import User
 
 API_KEY = '985d088b7d85476a9e834a2d8870b5b3' #newsapi.org
 
@@ -153,7 +154,7 @@ def settings(request):
 def invited_received_view(request):
     if request.user.is_authenticated:
         profile = Profile.objects.get(user=request.user)
-        qs = Relationship.object.invitations_received(profile)
+        qs = Relationship.objects.invitations_received(profile)
 
         context = {
             'qs': qs,
@@ -200,5 +201,21 @@ class ProfileListView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(ProfileListView, self).get_context_data(*args, **kwargs)
-        context['user'] = self.request.user
+        user = User.objects.get(username__iexact=self.request.user)
+        profile = Profile.objects.get(user=user)
+        rel_r = Relationship.objects.filter(sender=profile)
+        rel_s = Relationship.objects.filter(receiver=profile)
+        rel_receiver = []
+        rel_sender = []
+        for i in rel_r:
+            rel_receiver.append(i.receiver.user)
+        for i in rel_s:
+            rel_sender.append(i.sender,user)
+            
+        context['rel_receiver'] = rel_receiver
+        context['rel_sender'] = rel_sender
+        context['is_empty'] = False
+        if len(self.get_queryset()) == 0:
+            context['is_empty'] = True
+
         return context

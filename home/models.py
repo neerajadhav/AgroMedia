@@ -94,7 +94,7 @@ STATUS_CHOICES = (
 
 class RelationshipManager(models.Manager):
     def invitations_received(self, receiver):
-        qs = Relationship.object.filter(receiver=receiver, status='send')
+        qs = Relationship.objects.filter(receiver=receiver, status='send')
         return qs
 
 
