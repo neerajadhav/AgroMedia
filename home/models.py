@@ -6,7 +6,7 @@ from django.db.models import Q
 
 class ProfileManager(models.Manager):
     def get_all_profiles_to_invite(self, sender):
-        profiles = Profiles.objects.all().exclude(user = sender)
+        profiles = Profile.objects.all().exclude(user = sender)
         profile = Profile.objects.get(user = sender)
         qs = Relationship.objects.filter(Q(sender = profile) | Q(receiver = profile))
         print(qs)
@@ -67,7 +67,7 @@ class Profile(models.Model):
             total_liked += item.liked.all().count()
         return total_liked
 
-    # object = ProfileManager()
+    objects = ProfileManager()
     
 
     def __str__(self):
@@ -105,7 +105,7 @@ class Relationship(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    object = RelationshipManager()
+    objects = RelationshipManager()
 
 
     def __str__(self):

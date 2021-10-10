@@ -8,6 +8,7 @@ urlpatterns = [
     path('marketplace/', views.marketplace, name='marketplace'),
     path('notifications/', views.invited_received_view, name='notifications'),
     # path('all-profiles/', views.profile_list_view, name='all-profiles'),
+    path('invite-profiles/', views.invite_profile_list_view, name='invite-profiles'),
     path('profile/', views.profile, name='profile'),
     path('all-profiles/', ProfileListView.as_view(), name='all-profiles'),
     path('settings/', views.settings, name='settings'),

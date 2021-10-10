@@ -7,12 +7,12 @@
 {% block maincontent %}
 
 <div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
-    <h5>People on AgroMedia</h5>
+    <h5>Add new friends</h5>
     <br>
 
-    {% if object_list %}
+    {% if qs %}
     <div class="row">
-        {% for i in object_list %}
+        {% for i in qs %}
             <div class="col-lg-4">
                 <div class="align-items-center mb-3">
                     <div class="card p-3" style="border-radius: 10px;">

@@ -176,11 +176,29 @@ def profile_list_view(request):
     else:
         return redirect('/')
 
+def invite_profile_list_view(request):
+    if request.user.is_authenticated:
+        user=request.user
+        qs = Profile.objects.get_all_profiles_to_invite(user)
+
+        context = {
+            'qs': qs,
+        }  
+
+        return render(request, 'home/invite_list.html', context)
+    else:
+        return redirect('/')
+
 class ProfileListView(ListView):
     model = Profile
     template_name = 'home/profile_list.html'
+    context_object_name = 'qs'
 
     def get_queryset(self):
-        user = self.request.user
-        qs = Profile.objects.get_all_profiles(user)
+        qs = Profile.objects.get_all_profiles(self.request.user)
         return qs
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProfileListView, self).get_context_data(*args, **kwargs)
+        context['user'] = self.request.user
+        return context
