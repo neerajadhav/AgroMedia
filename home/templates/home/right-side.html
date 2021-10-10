@@ -1,0 +1,36 @@
+{% load static %}
+
+<!-- topdrop -->
+<table class="table table-borderless">
+    <tr>
+    <td style="width: 40px; padding: 0px; padding-top: 5px;">
+        <a href="{% url 'profile' %}" style="text-decoration: none; color: black;">
+        <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle" style="width: 35px; height: 35px;" alt="{{ user.username }}">
+        </a>
+    </td>
+    <td class="py-0" style="line-height: 20px;">
+        <a href="{% url 'profile' %}" style="text-decoration: none; color: black;">
+        <small class="card-title">
+            <b>{{ user.username }}</b>
+        </small><br>
+        {% if user.profile.first_name %}
+        <small> {{ user.profile.first_name }} {{ user.profile.last_name }} </small>
+        {% endif %}
+        </a>
+    </td>
+    <td>
+        <div class="dropdown float-end">
+        <button class="btn btn-secondary dropdown-toggle top-tab inactive-btn text-center" type="button" id="navdrop" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        <ul class="dropdown-menu" aria-labelledby="navdrop">
+            <li><a class="dropdown-item" href="{% url 'settings' %}"><i class="bi bi-gear"></i> Setting</a></li>
+            <li><a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+        </ul>
+        </div>
+    </td>
+    </tr>
+</table>
+
+<hr>
+
+<!-- ad banner -->
+<img src="https://dsim.in/blog/wp-content/uploads/2014/01/Online-Advertising-banner.jpg" class="img-fluid mt-3" alt="ad banner">

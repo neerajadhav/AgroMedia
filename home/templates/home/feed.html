@@ -30,15 +30,17 @@
     <thead>
         <tr class="text-center">
         <td class="text-muted" style="width: 33%;">
-            <form method="POST" action="{% url 'liked'%}">
+            <form method="POST" action="{% url 'liked'%}" class="like-form" id="{{ i.id }}">
             {% csrf_token %}
                 <input type="hidden" name="post_id" value="{{ i.id }}">
-                <button type="submit" class="btn p-0">
-                    {{ i.num_likes }}
+                <div class="like-count{{ i.id }}" style="display: inline-block;">{{ i.num_likes }}</div>
+                <button type="submit" class="btn p-0 like-btn{{ i.id }}">
                     {% if profile not in i.liked.all %}
-                    <i class="bi bi-suit-heart"></i>
+                    {% comment %} <i class="bi bi-suit-heart"></i> {% endcomment %}
+                    🤍
                     {% else %}
-                    <i class="bi bi-suit-heart-fill text-danger"></i>
+                    {% comment %} <i class="bi bi-suit-heart-fill text-danger"></i> {% endcomment %}
+                    ❤
                     {% endif %}
                 </button>
             </form>

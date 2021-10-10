@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home',
     'posts',
     'crispy_forms',
+    'weather',
 ]
 
 MIDDLEWARE = [

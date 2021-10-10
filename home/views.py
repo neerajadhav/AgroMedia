@@ -2,11 +2,14 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import auth
 import requests
-from .models import Profile
+from .models import Profile, Relationship
 from .forms import ProfileModelForm
 from posts.forms import PostModelForm, CommentModelForm
 from posts.models import Post, Like
-API_KEY = '985d088b7d85476a9e834a2d8870b5b3'
+from django.http import JsonResponse
+from django.views.generic import ListView
+
+API_KEY = '985d088b7d85476a9e834a2d8870b5b3' #newsapi.org
 
 def home(request):
     if request.user.is_authenticated:
@@ -76,7 +79,14 @@ def like_unlike_post(request):
             post_obj.save()
             like.save()
 
-        return redirect('home')
+        data = {
+            'value': like.value,
+            'likes': post_obj.liked.all().count(),
+        }
+        return JsonResponse(data, safe=False)
+
+
+    return redirect('home')
 
 
 def newspaper(request):
@@ -139,3 +149,38 @@ def settings(request):
         return render(request, 'home/settings.html', context)
     else:
         return redirect('/')
+
+def invited_received_view(request):
+    if request.user.is_authenticated:
+        profile = Profile.object.get(user=request.user)
+        qs = Relationship.object.invitations_received(profile)
+
+        context = {
+            'qs': qs,
+        }  
+
+        return render(request, 'home/notifications.html', context)
+    else:
+        return redirect('/')
+
+def profile_list_view(request):
+    if request.user.is_authenticated:
+        user=request.user
+        qs = Profile.object.get_all_profiles(user)
+
+        context = {
+            'qs': qs,
+        }  
+
+        return render(request, 'home/profile_list.html', context)
+    else:
+        return redirect('/')
+
+class ProfileListView(ListView):
+    model = Profile
+    template_name = 'home/profile_list.html'
+
+    def get_queryset(self):
+        user = self.request.user
+        qs = Profile.object.get_all_profiles(user)
+        return qs

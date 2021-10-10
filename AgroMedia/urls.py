@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('landing.urls')),
     path('', include('home.urls')),
     path('', include('posts.urls')),
+    path('', include('weather.urls')),
 ]
 
 if settings.DEBUG:

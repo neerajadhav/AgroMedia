@@ -1,0 +1,39 @@
+<div class="px-3 pt-2">
+    <b>Weather</b>
+
+    {% include 'home/weather.html' %}
+
+
+    <div class="p-3" id="weatherContainer">
+        <div class="row">
+            <div class="col-6">
+                <span class="icon"><img style="width: 100%;" class="img-fluid" id="documentIconImg" /></span>
+            </div>
+            <div class="col-6">
+                <p><b id="cityHeader"></b></p>
+                <div class="temp" id="temperature"></div>
+            </div>
+        </div>
+        <table class="table table-borderless">
+            <tr>
+                <td><b>Weather</b></td>
+                <td><div id="weatherDescriptionHeader"></div></td>
+            </tr>
+            <tr>
+                <td><b>Windspeed</b></td>
+                <td>
+                    <div id="windSpeed"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Humidity</b></td>
+                <td>
+                    <div id="humidity"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<img src="https://riteadhesives.b-cdn.net/wp-content/uploads/dummy-banner.png" class="img-fluid pt-3" alt="ad banner">

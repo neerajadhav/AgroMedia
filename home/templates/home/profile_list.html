@@ -6,21 +6,21 @@
 
 {% block maincontent %}
 
-
 <div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
-    <h5>Friend Requests</h5>
+    <h5>People on AgroMedia</h5>
     <br>
-    {% if qs %}
+
+    {% if object_list %}
     <div class="row">
-        {% for i in qs %}
+        {% for i in object_list %}
             <div class="col-lg-4">
                 <div class="align-items-center mb-3">
                     <div class="card p-3" style="border-radius: 10px;">
                         <div class="user text-center">
-                            <div class="profile"> <img src="{{ i.sender.image.url }}" class="rounded-circle" width="60%"> </div>
+                            <div class="profile"> <img src="{{ i.user.profile.image.url }}" class="rounded-circle" width="60%"> </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <h5 class="mb-0">{{ i.sender }}</h5> <span class="text-muted d-block mb-2">{{ i.sender.first_name }} {{ i.sender.last_name }}</span> <button class="btn btn-success btn-sm follow">Accept</button>
+                            <h5 class="mb-0">{{ i.user }}</h5> <span class="text-muted d-block mb-2">{{ i.user.profile.first_name }} {{ i.user.profile.last_name }}</span> <button class="btn btn-success btn-sm follow">Accept</button>
                         </div>
                     </div>
                 </div>
@@ -32,6 +32,7 @@
         <h5>No Friend Requests</h5>
     </div>
     {% endif %}
+
 
 </div>
 

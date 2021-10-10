@@ -2,6 +2,29 @@ from django.db import models
 from django.contrib.auth.models import User
 from .utils import get_random_code
 from django.template.defaultfilters import slugify
+from django.db.models import Q
+
+class ProfileManager(models.Manager):
+    def get_all_profiles_to_invite(self, sender):
+        profiles = Profiles.objects.all().exclude(user = sender)
+        profile = Profile.objects.get(user = sender)
+        qs = Relationship.objects.filter(Q(sender = profile) | Q(receiver = profile))
+        print(qs)
+
+        accepted = []
+        for rel in qs:
+            if rel.status == 'accepted':
+                accepted.append(rel.receiver)
+                accepted.append(rel.sender)
+        print(accepted)
+
+        available = [profile for profile in profiles if profile not in accepted]
+        print(available)
+        return available
+
+    def get_all_profiles(self, me):
+        profiles = Profile.object.all().exclude(user = me)
+        return profiles
 
 class Profile(models.Model):
     first_name = models.CharField(max_length=50, blank=True, null=True)
@@ -44,6 +67,9 @@ class Profile(models.Model):
             total_liked += item.liked.all().count()
         return total_liked
 
+    object = ProfileManager()
+    
+
     def __str__(self):
         return f"{self.user.username}"
 
@@ -61,16 +87,25 @@ class Profile(models.Model):
         self.slug = to_slug
         super().save(*args, **kwargs)
 
-
 STATUS_CHOICES = (
     ('send', 'Send'),
     ('accepted', 'Accepted'),
 )
 
+class RelationshipManager(models.Manager):
+    def invitations_received(self, receiver):
+        qs = Relationship.object.filter(receiver=receiver, status='send')
+        return qs
+
+
 class Relationship(models.Model):
     sender = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='sender')
     receiver = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='receiver')
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default='pending')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    object = RelationshipManager()
 
 
     def __str__(self):
