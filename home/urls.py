@@ -13,4 +13,5 @@ urlpatterns = [
     path('all-profiles/', ProfileListView.as_view(), name='all-profiles'),
     path('settings/', views.settings, name='settings'),
     path('logout/', views.logout_view, name='logout'),
+    path('send-invite/', send_invatation, name='send-invite'),
 ]

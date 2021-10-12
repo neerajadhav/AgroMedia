@@ -3,6 +3,7 @@
 {% url 'marketplace' as marketplace %}
 {% url 'notifications' as notifications %}
 {% url 'profile' as profile %}
+{% load static %}
 
 <!-- middle top nav -->
 <div class="row">
@@ -10,7 +11,7 @@
     <table class="table table-borderless">
 
 
-      {% include "home/logo-searchbar.html" %}
+      {% comment %} {% include "home/logo-searchbar.html" %} {% endcomment %}
 
       <tr class="text-center">
         <td>

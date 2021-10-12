@@ -6,9 +6,28 @@
 
 {% block maincontent %}
 
+<div class="mt-5">
+<form action="" method="GET">
+
+<div class="input-group mb-3">
+  <input type="text" style="border-radius: 10px 0px 0px 10px; border: 1px solid #022f96; color:#022f96;" class="form-control" placeholder="Search News" aria-label="Recipient's username" aria-describedby="basic-addon2" name="query">
+  <div class="input-group-append">
+    <button type="submit" class="btn inactive-btn" style="border-radius: 0px 10px 10px 0px;" type="button">Search</button>
+  </div>
+</div>
+</form>
+</div>
+
+{% if articles %}
+{% else %}
+    <div class="alert alert-info text-center">
+        <h5>Nothing found</h5>
+    </div>
+{% endif %}
+
 {% for i in articles %}
 
-<div class="card p-3 pt-1 pt-lg-2 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
+<div class="card p-3 pt-1 pt-lg-2 mt-lg-3 mt-4 border-0 shadow" style="border-radius: 10px;">
     <div class="row">
         {% if i.urlToImage %}
         <div class="col-lg-4 pb-3 p-0 p-lg-2">

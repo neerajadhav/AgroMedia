@@ -6,7 +6,12 @@
 
 {% block maincontent %}
 
-<div class="card p-3 mt-lg-5 mt-4 border-0 shadow" style="border-radius: 10px;">
+<div class="mt-5">
+<a href="{% url 'all-profiles' %}" style="border-radius: 10px;" class="btn btn-primary">All Profiles</a>
+<a href="{% url 'invite-profiles' %}" style="border-radius: 10px;" class="btn btn-outline-primary">Send Requests</a>
+</div>
+
+<div class="card p-3 mt-lg-3 mt-4 border-0 shadow" style="border-radius: 10px;">
     <h5>People on AgroMedia</h5>
     <br>
     
@@ -22,16 +27,30 @@
                         <div class="mt-5 text-center">
                             <h5 class="mb-0">{{ i.user }}</h5> <span class="text-muted d-block mb-2">{{ i.user.profile.first_name }} {{ i.user.profile.last_name }}</span>
                             
-                            <form action="" methods="POST">
+                            {% if i.user not in rel_receiver and i.user not in rel_sender %}
+                            <form action="{% url 'send-invite' %}" methods="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="profile_pk" value="{{ i.pk }}">
-                                
+                                <button type="submit" class="btn btn-success btn-sm">Add Friend</button>
                             </form>
+                            {% endif %}
 
+                            {% if i.user in rel_receiver and request.user not in i.friends.all %}
                             <form action="" methods="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="profile_pk" value="{{ i.pk }}">
+                                <button disabled type="submit" class="btn btn-secondary btn-sm">Pending</button>
                             </form>
+                            {% endif %}
+
+                            {% if request.user in i.friends.all %}
+                            <form action="" methods="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="profile_pk" value="{{ i.pk }}">
+                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                            {% endif %}
+
 
                         </div>
                     </div>

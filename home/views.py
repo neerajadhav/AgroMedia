@@ -92,7 +92,8 @@ def like_unlike_post(request):
 
 def newspaper(request):
     if request.user.is_authenticated:
-        url = 'https://newsapi.org/v2/everything?q=(india AND agriculture AND farmers AND bjp AND modi)&apiKey=' + API_KEY
+        query = request.GET.get('query')
+        url = f'https://newsapi.org/v2/everything?q=({query} AND india)&apiKey={API_KEY}'
         response = requests.get(url)
         data = response.json()
         articles = data['articles']
@@ -210,7 +211,7 @@ class ProfileListView(ListView):
         for i in rel_r:
             rel_receiver.append(i.receiver.user)
         for i in rel_s:
-            rel_sender.append(i.sender,user)
+            rel_sender.append(i.sender.user)
             
         context['rel_receiver'] = rel_receiver
         context['rel_sender'] = rel_sender
@@ -219,3 +220,17 @@ class ProfileListView(ListView):
             context['is_empty'] = True
 
         return context
+
+def send_invatation(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            pk = request.POST.get('profile_pk')
+            user = request.user
+            sender = Profile.objects.get(user=user)
+            receiver = Profile.objects.get(pk=pk)
+            rel = Relationship.objects.create(sender=sender, receiver=receiver, status='send')
+            return redirect(request.META.get('HTTP_REFERER'))
+        else:
+            return redirect('/all-profiles')
+    else:
+        return redirect('/')
