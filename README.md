@@ -2,6 +2,8 @@
 # AgroMedia
 A social media platform for agriculture sector 
 
+## [Demo video](https://drive.google.com/file/d/1E-Zy4Zat2XYIHKrz0iaB9Ii77jSuSdsI/view?usp=sharing)
+
 ## Features 
  - Mobile first **Modern design**
  - Users can **create**, **delete**, **edit**, **like** posts and make **comments** on them
